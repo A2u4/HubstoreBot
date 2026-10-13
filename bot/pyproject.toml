@@ -1,0 +1,56 @@
+[project]
+name = "markets-bot"
+version = "2.0.0"
+description = "Markets bot cluster (Vapiano, Hub Store, Trade Zone) rewritten with discord.py"
+requires-python = ">=3.12"
+dependencies = [
+  "discord.py>=2.7,<3",
+  "SQLAlchemy[asyncio]>=2.0,<2.2",
+  "asyncpg>=0.30,<0.33",
+  "pydantic-settings>=2.6,<3",
+  "Pillow>=11,<13",
+  "croniter>=6,<7",
+  "aiohttp>=3.11,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-asyncio>=0.25",
+  "ruff>=0.8",
+  "mypy>=1.13",
+]
+
+[project.scripts]
+markets-bot = "markets_bot.__main__:main"
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+markets_bot = ["assets/*", "assets/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "ASYNC", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "E501", "SIM105", "ASYNC109"]
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["markets_bot"]
+mypy_path = "src"
+ignore_missing_imports = true
+check_untyped_defs = true

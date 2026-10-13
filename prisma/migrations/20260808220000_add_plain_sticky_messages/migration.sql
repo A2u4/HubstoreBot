@@ -1,0 +1,3 @@
+ALTER TABLE "sticky_messages"
+ADD COLUMN "plainText" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN "attachmentUrls" TEXT[] NOT NULL DEFAULT ARRAY[]::TEXT[];

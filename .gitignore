@@ -1,0 +1,32 @@
+# Secrets: never commit real values (copy .env.example to .env)
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Runtime data
+logs/
+*.log
+/uploads/
+pm2-*.json
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
